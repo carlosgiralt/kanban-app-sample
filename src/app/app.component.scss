@@ -1,5 +1,10 @@
 .board {
   padding: 0 20px;
+
+  &-small {
+    background-color: #f2f7fb;
+    padding: 0;
+  }
 }
 
 .logo {

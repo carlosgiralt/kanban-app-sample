@@ -1,4 +1,4 @@
-<div class="task-list"  [ngClass]="{'last-workflow': isLast}"  [ngClass.gt-sm]="{'task-list-lg': true, 'last-workflow': isLast}" >
+<div class="task-list" [ngClass]="{'last-workflow': isLast}"  [ngClass.gt-sm]="{'task-list-lg': true, 'last-workflow': isLast}" >
   <p class="title">{{ title }} ({{ tasks.length }})</p>
 
   <div class="item-list" [ngClass]="{'item-list-empty': tasks.length === 0 }" cdkDropList [cdkDropListData]="tasks"

@@ -1,14 +1,7 @@
-<div class="task-list">
-  <div fxLayout="row" fxLayoutAlign="stretch center">
-    <p class="title" fxFlex="90">{{ title }} ({{ tasks.length }})</p>
-    <div fxFlex>
-      <button mat-icon-button color="light" matTooltip="Create task" matTooltipPosition="left">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
+<div class="task-list"  [ngClass]="{'last-workflow': isLast}"  [ngClass.gt-sm]="{'task-list-lg': true, 'last-workflow': isLast}" >
+  <p class="title">{{ title }} ({{ tasks.length }})</p>
 
-  </div>
-  <div class="item-list" [ngClass]="{'last-workflow': isLast}" cdkDropList [cdkDropListData]="tasks"
+  <div class="item-list" [ngClass]="{'item-list-empty': tasks.length === 0 }" cdkDropList [cdkDropListData]="tasks"
        (cdkDropListDropped)="drop($event)"
        (mouseenter)="showCreateButton = true"
        (mouseleave)="showCreateButton = false">
@@ -16,6 +9,10 @@
     <app-task-item *ngFor="let task of tasks" [task]="task" cdkDrag>
       <div class="item-placeholder" *cdkDragPlaceholder></div>
     </app-task-item>
+
+    <div *ngIf="tasks.length === 0" fxLayout="column" fxLayoutAlign="center center">
+      <h2 class="no-tasks-text">No tasks here</h2>
+    </div>
 
   </div>
 </div>

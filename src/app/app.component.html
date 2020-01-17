@@ -3,7 +3,7 @@
   {{ title }}
 </mat-toolbar>
 
-<div class="board" cdkDropListGroup fxLayout="row" fxLayoutAlign="startstart">
+<div class="board" cdkDropListGroup fxLayout="row" fxLayoutAlign="start start" fxLayout.lt-md="column" fxLayoutAlign="start stretch">
   <app-task-list
     fxFlex
     *ngFor="let workflow of workflows; last as isLast"

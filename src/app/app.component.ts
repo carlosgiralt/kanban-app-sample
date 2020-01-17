@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Task, TaskStatus} from './task.model';
+import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Task, TaskStatus } from './task.model';
 
 @Component({
   selector: 'app-root',
@@ -24,13 +24,16 @@ export class AppComponent {
     {id: 8, title: 'Take a shower', description: '', status: TaskStatus.DOING},
 
     {id: 9, title: 'Get up', description: '', status: TaskStatus.DONE},
+    {id: 10, title: 'Get up', description: '', status: TaskStatus['IN REVIEW']},
   ];
 
   board = {
     backlog: this.tasks.filter(task => task.status === TaskStatus.BACKLOG),
     'to do': this.tasks.filter(task => task.status === TaskStatus['TO DO']),
     doing: this.tasks.filter(task => task.status === TaskStatus.DOING),
-    done: this.tasks.filter(task => task.status === TaskStatus.DONE)
+    done: this.tasks.filter(
+      task => [TaskStatus['IN REVIEW'], TaskStatus.DONE].find(status => status === task.status)
+    )
   };
 
   drop(event: CdkDragDrop<Task[]>) {
@@ -42,7 +45,7 @@ export class AppComponent {
         event.previousIndex,
         event.currentIndex);
       const newStatus = +event.container.id.replace('cdk-drop-list-', '');
-      const task = { ...event.container.data[event.currentIndex] };
+      const task = {...event.container.data[event.currentIndex]};
       task.status = newStatus;
       event.container.data[event.currentIndex] = task;
     }

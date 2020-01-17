@@ -2,8 +2,17 @@ export enum TaskStatus {
   BACKLOG,
   'TO DO',
   DOING,
+  'IN REVIEW',
   DONE
 }
+
+export const TaskStatusIcon = {
+  BACKLOG: 'assignment',
+  'TO DO': 'assignment_ind',
+  DOING: 'schedule',
+  'IN REVIEW': 'done',
+  DONE: 'done_all'
+};
 
 export class Task {
   id: number;

@@ -3,13 +3,29 @@
   cursor: default;
   margin: 0 auto 14px auto;
 
+  .task-link {
+    color: rgba(0,0,0,.8);
+    font-weight: bold;
+    margin-right: 5px;
+    opacity: .8;
+    padding-right: 10px;
+    text-transform: uppercase;
+  }
+
   .title {
-    color: #1d84ef;
     font-size: 18px;
+    opacity: .6;
   }
 
   .description {
     opacity: .5;
+  }
+
+  .status {
+    background-color: rgba(0,0,0,.1);
+    border-radius: 4px;
+    opacity: .5;
+    padding: 2px 5px;
   }
 }
 

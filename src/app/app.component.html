@@ -6,8 +6,9 @@
 <div class="board" cdkDropListGroup fxLayout="row" fxLayoutAlign="startstart">
   <app-task-list
     fxFlex
-    *ngFor="let workflow of workflows"
+    *ngFor="let workflow of workflows; last as isLast"
     [title]="workflow"
+    [isLast]="isLast"
     [tasks]="board[workflow]"
     (OnDrop)="drop($event)">
   </app-task-list>

@@ -8,6 +8,7 @@ import {Task} from '../task.model';
 })
 export class TaskListComponent implements OnInit {
 
+  @Input() isLast = false;
   @Input() title = 'ItemList';
   @Input() tasks: Task[] = [];
   @Output() OnDrop = new EventEmitter();

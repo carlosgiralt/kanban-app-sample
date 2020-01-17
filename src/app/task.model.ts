@@ -1,6 +1,6 @@
 export enum TaskStatus {
   BACKLOG,
-  TODO,
+  'TO DO',
   DOING,
   DONE
 }

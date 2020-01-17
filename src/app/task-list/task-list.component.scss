@@ -15,10 +15,14 @@
     overflow: hidden;
     display: block;
     padding: 15px;
+
+    &.last-workflow {
+      background-color: #a5dfe1;
+    }
   }
 
   .item-placeholder {
-    background: #f1f5f9;
+    background-color: transparent;
     border: dashed 2px rgba(80, 87, 94, .1);
     border-radius: 4px;
     min-height: 96px;

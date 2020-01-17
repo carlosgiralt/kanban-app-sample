@@ -9,6 +9,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DragDropModule,
 
     FlexLayoutModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

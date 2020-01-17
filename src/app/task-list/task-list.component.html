@@ -1,4 +1,13 @@
-<h2>{{ title }}</h2>
-<div class="item-list" cdkDropList [cdkDropListData]="tasks" (cdkDropListDropped)="drop($event)">  
-  <app-task-item *ngFor="let task of tasks" [task]="task" cdkDrag></app-task-item>
+<div class="task-list">
+  <p class="title">{{ title }} ({{ tasks.length }})</p>
+  <div class="item-list" cdkDropList [cdkDropListData]="tasks"
+       (cdkDropListDropped)="drop($event)"
+       (mouseenter)="showCreateButton = true"
+       (mouseleave)="showCreateButton = false">
+    <app-task-item *ngFor="let task of tasks" [task]="task" cdkDrag>
+      <div class="item-placeholder" *cdkDragPlaceholder></div>
+    </app-task-item>
+    </button>
+
+  </div>
 </div>

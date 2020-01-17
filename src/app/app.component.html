@@ -1,11 +1,14 @@
-<h1>{{ title }}</h1>
-<hr>
+<mat-toolbar class="toolbar">
+  <img class="logo" src="/assets/images/logo.svg">
+  {{ title }}
+</mat-toolbar>
+
 <div class="board" cdkDropListGroup fxLayout="row" fxLayoutAlign="startstart">
-  <app-task-list fxFlex
+  <app-task-list
+    fxFlex
     *ngFor="let workflow of workflows"
     [title]="workflow"
     [tasks]="board[workflow]"
     (OnDrop)="drop($event)">
-    <h2>{{ workflow }} ({{ board[workflow].length }})</h2>
   </app-task-list>
 </div>

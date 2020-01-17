@@ -1,3 +1,10 @@
-<p>
-  {{ task }}
-</p>
+<mat-card class="task-item">
+  <mat-card-title class="title">
+    {{ task.title }}
+  </mat-card-title>
+  <mat-card-content>
+    <p class="description">
+      {{ task.description.slice(0, 50) || 'No description yet.' }}
+    </p>
+  </mat-card-content>
+</mat-card>

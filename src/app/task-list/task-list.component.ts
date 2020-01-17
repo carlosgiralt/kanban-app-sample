@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Task} from '../task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -8,8 +9,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TaskListComponent implements OnInit {
 
   @Input() title = 'ItemList';
-  @Input() tasks: string[] = [];
+  @Input() tasks: Task[] = [];
   @Output() OnDrop = new EventEmitter();
+
+  showCreateButton = false;
 
   constructor() { }
 

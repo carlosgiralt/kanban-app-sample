@@ -1,0 +1,5 @@
+<button mat-button class="new-task-btn" fxFill *ngIf="!addTask" (click)="addTask = true">
+  <mat-icon>add</mat-icon> Create task
+</button>
+
+<app-new-task-form [show]="addTask" *ngIf="addTask" (OnClickOut)="addTask = false"></app-new-task-form>

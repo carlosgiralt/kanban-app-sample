@@ -3,7 +3,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatChipsModule,
-  MatIconModule,
+  MatIconModule, MatInputModule,
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
@@ -14,6 +14,7 @@ import {
     MatCardModule,
     MatChipsModule,
     MatIconModule,
+    MatInputModule,
     MatToolbarModule,
     MatTooltipModule
   ],
@@ -22,6 +23,7 @@ import {
     MatCardModule,
     MatChipsModule,
     MatIconModule,
+    MatInputModule,
     MatToolbarModule,
     MatTooltipModule
   ]

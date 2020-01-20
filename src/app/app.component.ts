@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { TaskService } from './services/task.service';
+import { TaskList } from './task-list.model';
 import { Task, TaskStatus } from './task.model';
 
 @Component({
@@ -10,31 +13,23 @@ import { Task, TaskStatus } from './task.model';
 export class AppComponent {
   title = 'Task board';
 
-  workflows = ['backlog', 'to do', 'doing', 'done'];
-  tasks: Task[] = [
-    {id: 1, title: 'Go home', description: '', status: TaskStatus.BACKLOG},
-    {id: 2, title: 'Fall asleep', description: '', status: TaskStatus.BACKLOG},
-    {id: 3, title: 'Check e-mail', description: '', status: TaskStatus.BACKLOG},
-    {id: 4, title: 'Walk dog', description: '', status: TaskStatus.BACKLOG},
-
-    {id: 5, title: 'Get to work', description: '', status: TaskStatus['TO DO']},
-    {id: 6, title: 'Pick up groceries', description: '', status: TaskStatus['TO DO']},
-
-    {id: 7, title: 'Brush teeth', description: '', status: TaskStatus.DOING},
-    {id: 8, title: 'Take a shower', description: '', status: TaskStatus.DOING},
-
-    {id: 9, title: 'Get up', description: '', status: TaskStatus.DONE},
-    {id: 10, title: 'Get up', description: '', status: TaskStatus['IN REVIEW']},
+  taskLists: TaskList[] = [
+    new TaskList({ id: 1, title: 'Backlog', status: TaskStatus.BACKLOG }),
+    new TaskList({ id: 2, title: 'To Do', status: TaskStatus['TO DO'] }),
+    new TaskList({ id: 3, title: 'Doing', status: TaskStatus.DOING }),
+    new TaskList({ id: 4, title: 'In Review', status: TaskStatus['IN REVIEW'] }),
+    new TaskList({ id: 5, title: 'Done', status: TaskStatus.DONE }),
   ];
 
-  board = {
-    backlog: this.tasks.filter(task => task.status === TaskStatus.BACKLOG),
-    'to do': this.tasks.filter(task => task.status === TaskStatus['TO DO']),
-    doing: this.tasks.filter(task => task.status === TaskStatus.DOING),
-    done: this.tasks.filter(
-      task => [TaskStatus['IN REVIEW'], TaskStatus.DONE].find(status => status === task.status)
-    )
-  };
+  constructor(private taskService: TaskService) {
+    taskService.all().subscribe(tasks => {
+      this.taskLists.map(taskList => {
+        taskList.items = tasks.filter(task => taskList.status === task.status);
+      });
+    });
+  }
+
+
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {

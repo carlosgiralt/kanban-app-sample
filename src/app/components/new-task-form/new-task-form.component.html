@@ -1,0 +1,9 @@
+<mat-card class="task-item">
+  <mat-card-content>
+    <form>
+      <mat-form-field fxFill>
+        <textarea matInput placeholder="What needs to be done?" rows="3" maxlength="120" (keydown.enter)="OnClickOut.emit(false)"></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -7,14 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NewTaskComponent, NewTaskFormComponent, TaskItemComponent, TaskListComponent } from './components';
+
 import { MaterialModule } from './material.module';
 import { TaskStatusPipe } from './pipes/task-status.pipe';
-import { TaskItemComponent } from './task-item/task-item.component';
-import { TaskListComponent } from './task-list/task-list.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NewTaskComponent,
+    NewTaskFormComponent,
     TaskItemComponent,
     TaskListComponent,
 
@@ -29,7 +32,9 @@ import { TaskListComponent } from './task-list/task-list.component';
     FlexLayoutModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

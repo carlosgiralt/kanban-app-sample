@@ -1,0 +1,19 @@
+<div class="task-list" [ngClass]="{'last-workflow': isLast}"  [ngClass.gt-sm]="{'task-list-lg': true, 'last-workflow': isLast}" >
+  <p class="title">{{ taskList.title }} ({{ taskList.items.length }})</p>
+
+  <div class="item-list" [ngClass]="{'item-list-empty': taskList.items.length === 0 }" cdkDropList [cdkDropListData]="taskList.items"
+       (cdkDropListDropped)="drop($event)"
+       (mouseenter)="showCreateButton = true"
+       (mouseleave)="showCreateButton = false">
+
+    <app-task-item *ngFor="let task of taskList.items" [task]="task" cdkDrag>
+      <div class="item-placeholder" *cdkDragPlaceholder></div>
+    </app-task-item>
+
+    <div *ngIf="taskList.items.length === 0" fxLayout="column" fxLayoutAlign="center center">
+      <h2 class="no-tasks-text" [innerText]="taskList.emptyListText"></h2>
+    </div>
+
+  </div>
+  <app-new-task *ngIf="isFirst" [status]="title"></app-new-task>
+</div>

@@ -2,7 +2,10 @@
   <mat-card-content>
     <form>
       <mat-form-field fxFill>
-        <textarea matInput placeholder="What needs to be done?" rows="3" maxlength="120" (keydown.enter)="OnClickOut.emit(false)"></textarea>
+        <textarea matInput placeholder="What needs to be done?"
+          [(ngModel)]="title" [ngModelOptions]="{standalone: true}"
+          (keydown.enter)="onSubmit()"
+          rows="3" maxlength="120"></textarea>
       </mat-form-field>
     </form>
   </mat-card-content>

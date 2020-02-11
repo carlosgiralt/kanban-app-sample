@@ -2,10 +2,12 @@
   <mat-card-title class="title">
     {{ task.title }}
   </mat-card-title>
+
   <mat-card-content >
     <p class="description">
-      {{ task.description.slice(0, 50) || 'No description yet.' }}
+      {{ task.description?.slice(0, 50) || 'No description yet.' }}
     </p>
+
     <div fxLayout="row" fxLayoutAlign="start center">
       <a class="task-link" routerLink=".">task-{{ task.id }}</a>
       <mat-icon

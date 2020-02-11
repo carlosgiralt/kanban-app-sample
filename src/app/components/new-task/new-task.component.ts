@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TaskStatus } from '../../task.model';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-new-task',
@@ -12,9 +13,13 @@ export class NewTaskComponent implements OnInit {
 
   addTask = false;
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+  }
+
+  save(event) {
+    this.taskService.create(event).subscribe(task => console.log('new', task));
   }
 
 }

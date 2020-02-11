@@ -12,6 +12,8 @@ import { NewTaskComponent, NewTaskFormComponent, TaskItemComponent, TaskListComp
 import { MaterialModule } from './material.module';
 import { TaskStatusPipe } from './pipes/task-status.pipe';
 import { TaskService } from './services/task.service';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,9 @@ import { TaskService } from './services/task.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     FlexLayoutModule,
     MaterialModule

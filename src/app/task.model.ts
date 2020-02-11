@@ -1,5 +1,5 @@
 export enum TaskStatus {
-  BACKLOG,
+  BACKLOG = 1,
   'TO DO',
   DOING,
   'IN REVIEW',

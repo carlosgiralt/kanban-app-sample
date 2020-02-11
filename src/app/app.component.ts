@@ -22,14 +22,12 @@ export class AppComponent {
   ];
 
   constructor(private taskService: TaskService) {
-    taskService.all().subscribe(tasks => {
+    taskService.all().subscribe((tasks: Task[]) => {
       this.taskLists.map(taskList => {
         taskList.items = tasks.filter(task => taskList.status === task.status);
       });
     });
   }
-
-
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
@@ -41,8 +39,11 @@ export class AppComponent {
         event.currentIndex);
       const newStatus = +event.container.id.replace('cdk-drop-list-', '');
       const task = {...event.container.data[event.currentIndex]};
-      task.status = newStatus;
+      task.status = newStatus + 1;
       event.container.data[event.currentIndex] = task;
+      this.taskService.update(task).subscribe(
+        updatedTask => console.log('updated:', updatedTask)
+      );
     }
   }
 }
